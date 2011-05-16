@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title>
+			ColorTheStates -- Selecting a Color
+		</title>
+		
+		<link type="text/css" rel="stylesheet" href="{{MEDIA_URL}}/css/jquery-ui-1.8.7.custom.css"></script>
+	
+ 		<style type="text/css">
+
+			body {
+				width:650px;
+			}
+
+	   		.colorwell {
+	     		border: 2px solid #fff;
+	     		width: 6em;
+	     		text-align: center;
+	     		cursor: pointer;
+	   		}
+   		
+			body .colorwell-selected {
+	     		border: 2px solid #000;
+	     		font-weight: bold;
+	   		}
+
+
+			.ui-slider-horizontal {
+				background-color:#737373;
+				margin-right:100px;
+			}
+ 		</style>
+		
+		
+		<script type="text/javascript" language="javascript" src="{{MEDIA_URL}}/js/jquery/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" language="javascript" src="{{MEDIA_URL}}/js/jquery/ui/jquery-ui-1.8.5.custom.min.js"></script>
+		<script type="text/javascript" src="{{MEDIA_URL}}/js/jscolor/jscolor.js"></script>
+		<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key={{gmaps_api_key}}"></script>
+ 
+		<script>
+ 			$(document).ready(function() {
+   											$("#slider").slider(
+																{ 
+																	slide: function(event, ui) {
+																		var number_value = $("#slider").slider( "option", "value" );
+																		document.forms['converter_form'].elements['color_opacity'].value = number_value;
+																	},
+										
+																	change: function(event, ui) {
+																		var number_value = $("#slider").slider( "option", "value" );
+																		document.forms['converter_form'].elements['color_opacity'].value = number_value;
+																	},
+										
+																	max: 99, 
+																	min: 0, 
+																	value:document.forms['converter_form'].elements['color_opacity'].value
+																}
+																);
+ 
+
+											map = new GMap2(document.getElementById("my_map"));
+	        								map.setCenter(new GLatLng(48.94336,-110.072266), 3);
+											window.selections = "?color1="+'70F2AE61'+'{% for i in states%}&states={{i}}{% endfor %}';
+											geoXml = new GGeoXml("http://apps.pbsnews.org/datatools/colorthestates/preview"+window.selections);
+		    								map.addOverlay(geoXml);
+											map.setUIToDefault();
+											return map;
+  										});
+
+				function convertColor(map){
+											convertOneColor(html_color.value, color_opacity.value, 'color_kml');
+											map.removeOverlay(geoXml);
+											window.selections = "?color1="+window.color+'{% for i in states%}&states={{i}}{% endfor %}';
+											geoXml = new GGeoXml('http://apps.pbsnews.org/datatools/colorthestates/preview'+window.selections);
+											map.addOverlay(geoXml);
+    										return selections;
+    									}
+
+				
+				function convertOneColor(html_color, opacity, element_name, number){
+																					html_color=opacity + html_color.substring(4,6) + html_color.substring(2,4)+html_color.substring(0,2);
+																					document.forms['converter_form'].elements[element_name].value = html_color;
+																					window.color=html_color;
+																					return window.color;
+																					}
+ 		</script>
+	</head>
+	
+	<body>
+
+		<form action="" name="converter_form" >
+  			<div id="picker" style="float: right;"></div>
+			{% include 'colorthestates/header.html' %}
+
+			<div style="font-size:22px;">
+				You selected {% ifequal states|length 51 %}<span style="font-weight:bold;">all the states</span>{% else %}
+				{% ifequal states|length 1 %} <span style="font-weight:bold;">{{states|join:", "}}</span> {% else %} 
+				these <span style="font-size:28px; color:#1727B3;">{{states|length}} states: </span><span style="font-weight:bold;">>{{states|join:", "}}</span>
+				{% endifequal %}{% endifequal %}
+			</div>
+				
+			<div style="padding-top:5px;font-size:16px;">
+				<a href="/datatools/colorthestates/">
+					Not what you expected? Go back and pick new states.
+				</a>
+			</div>
+
+			<div style="padding-top:30px;"></div>
+			
+			<div style="font-size:20px; padding-bottom:15px; font-weight:bold;">
+				What color?
+			</div>
+
+			<div class="form-item">
+				<label for="color" style="padding-top:20px; padding-left:55px;">
+					Type in an HTML color code, or click in the box to use the color picker:
+				</label>
+				
+				<div style="float:right;">
+					<input class="color" type="text" id="html_color" name="html_color" size=9 class="colorwell" value="#61AEF2" />
+				</div>
+				
+				<label>
+					<div style="padding-bottom:30px;"></div>
+					<div style="font-size:20px; font-weight:bold; padding-bottom:15px;">
+						How light or dark?
+					</div>
+	
+					<div>
+						<span style="margin-top:8px;"></span>
+						<div id="test" style="float:right;">
+							<div style="float:right; padding-left:20px;">
+								<input name="color_opacity" name="color_opacity" id="color_opacity" onKeyUp="console.log('check');$('#slider').slider( 'option', 'value', document.forms['converter_form'].elements['color_opacity'].value );" value="70" type="text" style="width:6em" />
+							</div>
+							
+							<div>
+								<div id="slider" style="margin-top:3px; width:490px;">
+								</div>
+								
+								<div style="padding-top:6px;">
+									Select an opacity between 0 (lightest) and 99 (darkest).
+								</div>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+   		
+		<div style="padding-bottom:80px;"></div>
+  		
+		<a style="padding:3px; border:2px solid black; float:right;padding-left:50px; padding-right:50px; color:#000000; text-decoration:none; background-color:#EBEBEB;" href='javascript:convertColor(map);'>
+			Update the map!
+		</a>
+		
+		<div style="padding-bottom:50px; border-bottom:3px dashed #000;"></div>
+		<div style="padding-bottom:30px;"></div>
+
+		<span style="font-size:16px; font-weight:bold;padding-right:10px;">
+			KML color code:
+		</span>
+		
+		<input name="color_kml" id="color_kml" type="text" style="width:6em" />
+
+		<div style="padding-bottom:20px;"></div>
+		
+		<span style="font-size:18px;">
+			If you're happy with this map preview, 
+			<a href="javascript:window.open('http://apps.pbsnews.org/datatools/colorthestates/download'+window.selections), ''">
+				download the file.
+			</a>
+		</span>
+		
+		<div style="padding-bottom:20px;"></div>
+
+		<span style="font-size:16px; font-style:italic;">
+			To upload this file for use in 
+				<a href="http://maps.google.com/help/maps/mymaps/create.html">
+					Google's MyMaps,</a>
+					create or open a map, click the import tab, and browse to the downloaded file on your computer. A tutorial (not affiliated with PBS) is 
+				<a href="http://www.askdavetaylor.com/how_to_import_xml_kml_data_file_google_maps.html">
+					here.
+				</a>
+				<div style="padding-bottom:10px;"></div>
+				If you are selecting multiple states and they display on different pages in MyMaps, a workaround is <a href="http://sites.google.com/site/gmapstips/alternative-to-paging-on-my-maps">here.</a>
+		</span>
+		</form>
+		<div style="padding-bottom:20px;"></div>
+
+		<div id="my_map" style="width:650px; height:500px;"></div>
+
+		{% include 'colorthestates/footer.html' %}
+
+		<p style="font-size:12px;"><a href="http://acko.net/dev/farbtastic"><a href="http://jscolor.com/">JSColor color picker</a> created by Jan Odvárko.</p>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			ColorTheStates -- Selecting States
+		</title>
+		
+		<script type='text/javascript'>
+			function selectAll(field)
+				{
+					for (i = 0; i < field.length; i++)
+						field[i].selected = true ;
+				}
+
+	
+			function validateState(state)
+				{
+					var x=document.forms["all_states"]["states"].value
+					if (x == null || x=="")
+						{
+							alert('Please select at least one state that you would like to fill in.');
+							return false;
+						}
+				}
+		</script>
+	
+	</head>
+	
+	<body style="width:650px;">
+		{% include 'colorthestates/header.html' %}
+		
+		<form method="get" name="all_states" onsubmit="return validateState()" action="/datatools/colorthestates/color">
+			<span style="font-size:16px; font-weight:bold;">
+				Select states to fill in:
+			</span>
+			<div style="padding-bottom:5px;"></div>
+			<span style="font-size:12px;">
+				To select multiple states, hold down the command key on a Mac<div style="padding-bottom:3px;">or the control key on a PC while clicking on state names.</div>
+			</span>
+			
+			
+			<div>
+			
+				<div style="padding-bottom:13px;"></div>
+
+				<div style="max-width:50px;">
+					<select name="states" size=20 multiple>
+						{% for state in all_states %}
+							<option name="states" value="{{state.abbrev}}">{{state.full_name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						{% endfor %}
+					</select>
+			
+				<div style="padding-bottom:10px;"></div>
+			</div>
+			
+			<input type=button name="SelectAll"   value="Select all states" onClick="selectAll(document.all_states.states)">
+			
+			<span style="float:right; margin-right:305px;">
+				<input type="submit" value="Continue">
+			</span>
+		
+		</form>
+		
+		<div style='padding-bottom:10px;'></div>
+			
+		{% include 'colorthestates/footer.html' %}
+		
+	</body>
+</html>
