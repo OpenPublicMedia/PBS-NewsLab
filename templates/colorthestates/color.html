@@ -42,7 +42,8 @@
  
 		<script>
  			$(document).ready(function() {
-   											$("#slider").slider(
+   											/*Initialize a slider that allows you to select color opacity */
+											$("#slider").slider(
 																{ 
 																	slide: function(event, ui) {
 																		var number_value = $("#slider").slider( "option", "value" );
@@ -61,6 +62,7 @@
 																);
  
 
+											/*Initialize the Google map that will serve as a preview window */
 											map = new GMap2(document.getElementById("my_map"));
 	        								map.setCenter(new GLatLng(48.94336,-110.072266), 3);
 											window.selections = "?color1="+'70F2AE61'+'{% for i in states%}&states={{i}}{% endfor %}';
@@ -71,6 +73,8 @@
   										});
 
 				function convertColor(map){
+											/*Get the user's selected color shade and opacity, clear and reload the map and fill the
+											polygon with their preferences*/
 											convertOneColor(html_color.value, color_opacity.value, 'color_kml');
 											map.removeOverlay(geoXml);
 											window.selections = "?color1="+window.color+'{% for i in states%}&states={{i}}{% endfor %}';
@@ -80,7 +84,7 @@
     									}
 
 				
-				function convertOneColor(html_color, opacity, element_name, number){
+				function convertOneColor(html_color, opacity, element_name, number){/*Convert a hex color code to KML-friendly format */
 																					html_color=opacity + html_color.substring(4,6) + html_color.substring(2,4)+html_color.substring(0,2);
 																					document.forms['converter_form'].elements[element_name].value = html_color;
 																					window.color=html_color;

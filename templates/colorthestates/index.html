@@ -6,13 +6,14 @@
 		</title>
 		
 		<script type='text/javascript'>
+			/*If user wants a map of all states, this makes it easier to select them all */
 			function selectAll(field)
 				{
 					for (i = 0; i < field.length; i++)
 						field[i].selected = true ;
 				}
 
-	
+			/*Confirm that a valid state has been selected*/
 			function validateState(state)
 				{
 					var x=document.forms["all_states"]["states"].value
@@ -46,7 +47,7 @@
 				<div style="max-width:50px;">
 					<select name="states" size=20 multiple>
 						{% for state in all_states %}
-							<option name="states" value="{{state.abbrev}}">{{state.full_name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<option name="states" value="{{state.abbrev}}">{{state.full_name}}
 						{% endfor %}
 					</select>
 			
