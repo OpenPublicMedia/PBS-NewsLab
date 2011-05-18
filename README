@@ -1,5 +1,11 @@
-Right now, this is just a teaser file.  Soon, this file will itemize various tools and templates that are available for the public.
+Welcome to the PBS NewsLab repo!  Here, we'll store code for tools we've made that make it easier for non-programmers to perform interactive tasks.  We also plan to store code snippets geared toward programmers that just make coding for data journalism a little bit easier.
 
-First up -- we're working on a tool called ColorTheStates that'll make it easier to generate background KML files that outline state(s) you'd like to highlight on a Google map.  This may include a KML color converter.
+The various folders contain different Django apps, with separate folders inside them that hold the templates.  
 
-As of now, you'll find it in the repo, but we're still tweaking it.  Feel free to play with this basic Django app. When you find bugs, please email Michelle at meminkoff@pbs.org.
+To grab the apps, clone our repo and then drag files you want for a specific app into your production environment, and don't forget to add the app to your settings file!
+
+Here's a list of the tools we've developed so far.  More to come soon.  If you find bugs, have improvements you'd like to push up, or have suggestions for other tools that would be helpful to you, please email Michelle at meminkoff@pbs.org.
+
+TOOLS
+
+1. ColorTheStates.  Deployed version at http://apps.pbsnews.org/datatools/colorthestates.  It makes it easier to generate KML files w/colored polygons for select state(s) which can be used as a background layer in a Google Map.  This app also includes a hexcode to KML color converter.
