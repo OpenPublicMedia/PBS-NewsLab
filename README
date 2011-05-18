@@ -1,10 +1,14 @@
-Welcome to the PBS NewsLab repo!  Here, we'll store code for tools we've made that make it easier for non-programmers to perform interactive tasks.  We also plan to store code snippets geared toward programmers that just make coding for data journalism a little bit easier.
+Welcome to the PBS NewsLab repo!  
+
+Here, we'll store code for tools we've made that make it easier for non-programmers to perform interactive tasks.  We also plan to store code snippets geared toward programmers that just make coding for data journalism a little bit easier.  We're calling these tools DataTools, and a deployed version of all apps can be found at the DataTools index page: http://apps.pbsnews.org/datatools
 
 The various folders contain different Django apps, with separate folders inside them that hold the templates.  
 
-To grab the apps, clone our repo and then drag files you want for a specific app into your production environment, and don't forget to add the app to your settings file!
+To grab the apps, clone our repo and then drag the files from a specific app you're interested in into your folder structure. Don't forget to add the app to your settings file!
 
-Here's a list of the tools we've developed so far.  More to come soon.  If you find bugs, have improvements you'd like to push up, or have suggestions for other tools that would be helpful to you, please email Michelle at meminkoff@pbs.org.
+Here's a list of the tools we've developed so far.  More to come soon.  If you find bugs, have improvements you'd like to push up, or have suggestions for other tools that would be helpful to you, please email PBS Data Producer Michelle Minkoff at meminkoff@pbs.org.
+
+
 
 TOOLS
 
