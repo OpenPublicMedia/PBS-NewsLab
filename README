@@ -2,9 +2,9 @@ Welcome to the PBS NewsLab repo!
 
 Here, we'll store code for tools we've made that make it easier for non-programmers to perform interactive tasks.  We also plan to store code snippets geared toward programmers that just make coding for data journalism a little bit easier.  We're calling these tools DataTools, and a deployed version of all apps can be found at the DataTools index page: http://apps.pbsnews.org/datatools
 
-All code found in this repository is open sourced, and covered by the <a href="http://www.opensource.org/licenses/mit-license.php">MIT license.</a>
+All code found in this repository is open sourced, and covered by the MIT license, which can be found here: http://www.opensource.org/licenses/mit-license.php.
 
-The various folders in this repocontain different Django apps, with separate folders inside them that hold the templates.  
+The various folders in this repo contain different Django apps, with separate folders inside them that hold the templates.  
 
 To grab the apps, clone our repo and then drag the files from a specific app you're interested in into your folder structure. Don't forget to add the app to your settings file!
 
