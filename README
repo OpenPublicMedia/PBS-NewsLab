@@ -1,6 +1,6 @@
 Welcome to the PBS NewsLab repo!  
 
-Here, we'll store code for tools we've made that make it easier for non-programmers to perform interactive tasks.  We also plan to store code snippets geared toward programmers that just make coding for data journalism a little bit easier.  We're calling these tools DataTools, and a deployed version of all apps can be found at the DataTools index page: http://apps.pbsnews.org/datatools
+Here, we'll store code for tools we've made that make it easier for non-programmers to perform interactive tasks.  We also plan to store code snippets geared toward programmers that just make coding for data journalism a little bit easier.  We're calling these tools DataTools, and a deployed version of all apps can be found at the DataTools index page: DOMAIN TBD
 
 All code found in this repository is open sourced, and covered by the MIT license, which can be found here: http://www.opensource.org/licenses/mit-license.php.
 
@@ -8,10 +8,11 @@ The various folders in this repo contain different Django apps, with separate fo
 
 To grab the apps, clone our repo and then drag the files from a specific app you're interested in into your folder structure. Don't forget to add the app to your settings file!
 
-Here's a list of the tools we've developed so far.  More to come soon.  If you find bugs, have improvements you'd like to push up, or have suggestions for other tools that would be helpful to you, please email PBS Data Producer Michelle Minkoff at meminkoff@pbs.org.
+Here's a list of the tools we've developed so far.  More to come soon.  
 
+If you find bugs, have improvements you'd like to push up, or have suggestions for other tools that would be helpful to you, please feel free to add them to the associated Wiki page or open an issue.
 
 
 TOOLS
 
-1. ColorTheStates.  Deployed version at http://apps.pbsnews.org/datatools/colorthestates.  It makes it easier to generate KML files w/colored polygons for select state(s) which can be used as a background layer in a Google Map.  This app also includes a hexcode to KML color converter.
+1. ColorTheStates.  Deployed version is current unavailable (20121111).  It makes it easier to generate KML files w/colored polygons for select state(s) which can be used as a background layer in a Google Map.  This app also includes a hexcode to KML color converter.
